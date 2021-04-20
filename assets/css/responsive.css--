@@ -1,0 +1,232 @@
+@media only screen and (min-width:1200px) and (max-width:4000px) 
+{
+    .container{width: 1270px;}
+    
+}
+
+
+
+
+
+@media only screen and (min-width:767px) and (max-width:1024px) {
+     
+    
+}
+
+
+@media only screen and (min-width:320px) and (max-width:768px) {
+    
+}
+
+
+
+
+
+
+
+
+/********* ipad ********/
+@media only screen and (min-width:767.5px) and (max-width:1150px){
+    
+
+    
+    
+    
+    /*****common classes*****/
+    
+    .hide_for_mobile{ display: none;}
+    
+    /*****common classes*****/
+    
+    body br{ display: none;}
+    
+    /******removinf clip pathe property******/
+    
+    
+    /******mobile banners******/
+    
+   
+    /******mobile banners******/
+    
+    
+    
+    /******removinf clip pathe property******/
+    
+    .nav-main{position: relative; background-color: #FFFFFF; padding: 11px 0 9px 0;}
+    .header{position: relative; background-color: #06546A;}
+    .nav-main .navbar-brand{margin: 0px 0 0 0; padding: 0px; max-width: 120px;}
+    .nav-main .navbar-brand img{ width: 100%;}
+    .top_bar{margin: 10px 0 13px 0;}
+    .header .nav-main .row{ margin-left: 0px; margin-right: 0px;}
+    .top_bar ul li a{font-size: 13px; line-height: 20px; font-family: 'BentonSans-Regular' !important;}
+    
+    .navbar-toggle {
+        margin: 5px 0 6px 0;
+        padding: 9px 0px 9px 0px;
+        background: none !important;
+        border: none;
+    }
+    
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #6C6C6C;
+        width: 26px;
+        height: 3px;
+    }
+    
+    .nav-main .navbar-default .navbar-nav.nav-links li a{font-family: 'BentonSans-Regular' !important; font-size: 14px;}
+    .nav-main .navbar-default .navbar-nav.nav-links li{padding: 5px 0 5px 0px; margin: 0 0 0 11px;}
+    
+    .custom_nav {
+        margin: 8px 20px 0 0;
+    }
+    
+    .adto_cart{margin: 1px 0px 0 0;}
+    
+    /*******home**********/
+    
+   
+    
+    
+    
+    
+
+   
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********* iphones mobiles ********/
+@media only screen and (max-width:767px)
+{
+    
+   
+   
+    
+    /*****common classes*****/
+    
+    .hide_for_mobile{ display: none;}
+    
+    /*****common classes*****/
+    
+    body br{ display: none;}
+    
+    /******removinf clip pathe property******/
+    
+    
+   
+    
+    
+    
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #6C6C6C;
+        width: 26px;
+        height: 3px;
+    }
+    
+    .nav-main .navbar-default .navbar-nav.nav-links li a{ padding: 0px;}
+    .nav-main .navbar-default .navbar-nav.nav-links li{padding: 5px 0 5px 0px; margin: 0 0 3px 0;}
+    
+    .nav-main .dropdown-menu{margin: 7px 0 0px 0 !important;}
+    
+    
+    
+    .navbar-collapse{padding: 0px;}
+    
+    
+    .nav_right{margin: -47px 80px 0 0;}
+    .nav_right a {
+        margin: 0 0 0 10px;
+        font-size: 14px;
+    }
+    
+    .nav-main .navbar-brand{padding: 0 0 0 15px; max-width: 100px;}
+    .nav-main{padding: 15px 0 15px 0;}
+    
+    .navbar-collapse {
+        padding: 0 15px;
+        width: 100%;
+    }
+    
+    .custom_nav {
+        margin: 8px 0px 0 0;
+    }
+    
+    /*******home**********/
+    
+    
+    /******banner*******/
+    
+    .banner_main .row{ padding: 0 15px;}
+    .banner_main h6{padding: 15px 0 15px 0; margin: 0px;}
+    .banner_main h3{font-size: 24px; line-height: normal; margin: 0 0 15px 0;}
+    .banner_button{margin: 0 0 22px 0;}
+    
+    /******banner*******/
+    
+    
+    
+    
+    
+   
+}
+
+
+@media only screen and (min-width:320px) and (max-width:766px) 
+{
+    
+   
+    
+    
+}
+
+
+
+@media only screen and (min-width:320px) and (max-width:500px) 
+{
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

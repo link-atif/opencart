@@ -1,0 +1,56 @@
+<div class="best_seller_main">
+    <div class="container">
+        <div class="heading_overlap_content">
+            <h2>{{ heading_title }}</h2>
+            <h3>{{ heading_title }}</h3>
+        </div>
+        <div id="demo" class="carousel_full_w">
+            <div id="best_seller_slider" class="owl-carousel">
+                {% for product in products %}
+                <div class="item">
+                    <div class="best_sel_col">
+                        <div class="best_col_brder">
+                            <div class="prdct_rating">
+                               {% if product.rating %}
+                                  {% for i in 1..5 %}
+                                  {% if product.rating < i %}
+                                  <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                  {% else %}
+                                  <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                                  {% endif %}
+                                  {% endfor %}
+                                {% endif %}
+                            </div>
+                            <figure>
+                                 <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"  /></a>
+                                <div class="product_overlay_pop">
+                                    <ul>
+                                        <li>
+                                            <a href="{{ product.href }}">
+                                                <img src="assets/images/pop_search.png">
+                                                <div class="clearfix"></div>
+                                                <span>LOOK</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ product.href }}">
+                                                <img src="assets/images/pop_bag.png">
+                                                <div class="clearfix"></div>
+                                                <span>BUY</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </figure>
+                        </div>
+                        <a href="{{ product.href }}" class="b_l">{{ product.name }}</a>
+                        <div class="price_col">
+                            <p>{{ product.price }} <span></span></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

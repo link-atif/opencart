@@ -1,0 +1,39 @@
+{% if categories %}
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-aos="fade-left" data-aos-duration="1200">
+	<ul class="nav navbar-nav navbar-right nav-links custom_nav">
+	{% for category in categories %}
+		{% if category.children %}
+			<li class="dropdown">
+                
+                <span class="drop_arrow dropdown-toggle" data-toggle="dropdown">
+                    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.49505 5.24194L9.79476 1.50811C10.0684 1.27059 10.0684 0.885498 9.79476 0.648097C9.52135 0.410677 9.0779 0.410677 8.80451 0.648097L4.99993 3.95196L1.19548 0.648193C0.921955 0.410773 0.478552 0.410773 0.205141 0.648193C-0.0683805 0.885614 -0.0683805 1.27069 0.205141 1.5082L4.50492 5.24203C4.64169 5.36074 4.82075 5.42003 4.99991 5.42003C5.17915 5.42003 5.35835 5.36063 5.49505 5.24194Z" fill="#333333"/>
+                    </svg>
+				</span>
+                
+				<a href="{{ category.href }}">
+					{{ category.name }}
+					
+				</a>
+				{% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+					<ul class="dropdown-menu">
+						{% for child in children %}
+						<li><a href="{{ child.href }}">{{ child.name }}</a></li>
+						{% endfor %}
+					</ul>
+				{% endfor %}
+			</li>
+		{% else %}
+			<li><a href="{{ category.href }}">{{ category.name }}</a></li>
+		{% endif %}
+	{% endfor %} 
+	<li >
+                                    <a  href="index.php?route=product/category/brand">
+                              {{ brand }}
+      
+                                    </a>
+                                    
+                                </li> 
+	</ul>
+</div>
+{% endif %} 

@@ -1,0 +1,140 @@
+{{ header }}
+<div class="banner_static_inner">
+        <div class="container">
+            <h2>{{ heading_title }}</h2>
+        </div>
+        <div id="crt_suc"></div>
+    </div>
+    
+    <!--banner inner pages-->
+    
+    <div class="cart_section_main">
+        <div class="container_cart">
+            <div class="cart_section_inner">
+                <div class="cart_header_title">
+                    <p>You have {{ total_products }} products in the shopping cart</p>
+                </div>
+                <div class="clearfix"></div>
+                <div class="table_cart_outer">
+                <form action="{{ action }}" name="myform"  method="post" enctype="multipart/form-data">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col" width="120px">&nbsp;</th>
+                        <th scope="col">{{ column_name }}</th>
+                        <th scope="col">{{ column_quantity }}</th>
+                        <th scope="col">{{ column_price }}</th>
+                        <th scope="col">{{ column_total }}</th>
+                        <th scope="col">&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                      <tr>{% if product.thumb %}
+                          <td>
+                              <div class="cart_image_control">
+                                  <img src="{{ product.thumb }}" alt="{{ product.name }}">
+                              </div>
+                          </td>
+                          {% endif %}
+                          <td class="text_left"><p>{{ product.name }}</p></td>
+                          <td>
+                            <div class="quantity_col">
+                                
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-left-minus btn btn-danger btn-number" onclick="decrease('{{product.cart_id}}','{{ product.unit_price }}')" data-type="minus" data-field="">
+                                          <span class="glyphicon glyphicon-minus"></span>
+                                        </button>
+                                    </span>
+                                     <input type="text" name="quantity[{{ product.cart_id }}]" value="{{ product.quantity }}" size="1" size="2" id="input-quantity{{product.cart_id}}" class="form-control" />
+                            <input type="hidden" name="product_id"  value="{{ product_id }}" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="quantity-right-plus btn btn-success btn-number" onclick="increase('{{product.cart_id}}','{{ product.unit_price }}')" data-type="plus" data-field="">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                           </div>
+                          </td>
+                          <td><p>{{ product.price }} <span></span></p></td>
+                          <td><p id="price_total[{{ product.cart_id }}]">{{ product.total }} <span></span></p></td>
+                        <td><a href="" onclick="cart.remove('{{ product.cart_id }}');" class="product_cross"><i class="fas fa-times"></i></a></td>
+                      </tr>
+                        
+                        {% endfor %}
+                      
+                      
+                    </tbody>
+                  </table>
+                </div>
+                </form>
+                </div>
+                
+                <div class="cart_subtotal_outer">
+                    <ul>
+                    {% for total in totals %}
+                        
+                        <li class="no_border">{{ total.title }}:<span class="color_grey">{{ total.text }} </span></li>{% endfor %}
+                        <li>
+                            <a href="{{ continue }}" class="continue_shupping">{{ button_shopping }}</a>
+                            <a href="{{ checkout }}" class="chkout_btn">{{ button_checkout }}</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    function increase(idz,price)
+    {
+      var text=document.getElementById('input-quantity'+idz).value;
+      var texts = parseInt(text)+1;
+      
+      var totals = parseInt(texts)*parseFloat(price);
+      
+      
+
+      $('#input-quantity'+idz).val(texts);
+    document.myform.submit();
+
+            
+      
+          
+    }
+  </script>
+  <script type="text/javascript">
+    function decrease(id,price)
+    {
+      var idz = id;
+      var price = price;
+    var total = price.replace('AED','');
+    
+      
+      var text=document.getElementById('input-quantity'+idz).value;
+      
+      var texts = parseInt(text)-1;
+      
+      if(texts==0){
+      var a="Quantity canot be zero";
+     
+      }else{
+      
+      var totals = parseInt(texts)*parseFloat(total);
+      
+      $('#input-quantity'+idz).val(texts);
+      
+      $('#price_total+idz').html(totals);
+      document.myform.submit();
+
+      }
+      
+      
+      
+      
+          
+    }
+  </script> 
+{{ footer }} 

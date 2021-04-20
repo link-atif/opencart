@@ -1,0 +1,14 @@
+<div class="item">
+                {% for banner in banners %}
+                    {% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}"  /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}"  />{% endif %}
+                    {% endfor %}
+                    <div class="banner_main_outer_content">
+                        <div class="container padd_0">
+                            <h2>{{ banner.title }}</h2>
+                            <h3>MY BRAND PERFUMES</h3>
+                            <p>The leading beauty and Personal care manufacturing companies based in UAE with its <br>corporate headquarters in Dubai with the core objective of providing clients with an<br> extensive selection of best fragrance choices.</p>
+                            <a href="#">Shop Now</a>
+                        </div>
+                    </div>
+                    
+                </div>

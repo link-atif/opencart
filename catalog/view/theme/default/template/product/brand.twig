@@ -1,0 +1,29 @@
+{{ header }}
+<div class="banner_static_inner">
+        <div class="container">
+            <h2>{{ heading_title }}</h2>
+        </div>
+    </div>
+    <!--banner inner pages-->
+    
+    <div class="brands_logo_section">
+        <div class="container">
+        {% for product in products %}
+            <div class="col-md-3">
+                 
+                <div class="brands_logo_col">
+
+                    <img src="{{ product.thumb }}" alt="">
+                </div>
+                
+            </div>
+            {% endfor %}
+            
+            
+            
+            
+            
+            
+        </div>
+    </div>
+    {{ footer }}

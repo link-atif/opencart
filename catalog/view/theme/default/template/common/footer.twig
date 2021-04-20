@@ -1,0 +1,167 @@
+<div class="footer_main">
+        <div class="container">
+            <div class="col-md-3">
+                <div class="footer_col">
+                    <h5>{{ text_links }}</h5>
+                    {% for category in categories %}
+                    <ul>
+                        <li><a href="{{ category.href }}">{{ category.name }}</a></li>
+                       
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="footer_col">
+                    <h5>{{ text_service }}</h5>
+                    <ul>
+                        
+                        <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+
+            <div class="col-md-2">
+            {% if informations %}
+                <div class="footer_col">
+                    <h5>{{ text_information }}</h5>
+                    <ul>
+                        {% for information in informations %}
+                         <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+                            {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            
+            
+            <div class="col-md-4">
+                <div class="footer_col">
+                    <div class="footer_contact_col">
+                        <p><img src="assets/images/tel.png"> {{telephone}}</p>
+                        <p><img src="assets/images/address.png">{{ address }}</p>
+                        <p><img src="assets/images/email.png"> <a href="mailto:{{email}}">{{email}}</a>
+                    </div>
+                    <div class="footer_social">
+                        <h6>Connect with us:</h6>
+                        <a target="blank" href="{{ fb }}"><i class="fab fa-facebook-f"></i></a>
+                        <a target="blank" href="{{ lin }}"><i class="fab fa-linkedin-in"></i></a>
+                        <a target="blank" href="{{ inst }}"><i class="fab fa-instagram"></i></a>
+                        <a target="blank" href="{{ twi }}"><i class="fab fa-twitter"></i></a>
+                        <a target="blank" href="{{ snap }}"><i class="fab fa-snapchat-ghost"></i></a>
+                    </div>
+                    <div class="visa_cards">
+                        <a href="#"><img src="assets/images/visa_1.png" alt=""></a>
+                        <a href="#"><img src="assets/images/visa_2.png" alt=""></a>
+                        <a href="#"><img src="assets/images/visa_3.png" alt=""></a>
+                        <a href="#"><img src="assets/images/visa_4.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright_sec">
+            <div class="copyright_gradient"></div>
+            <div class="container">
+                <p>© 2020 My Brand Perfumes. All rights reserved. Site by <a href="#">GO-Gulf</a></p>
+            </div>
+        </div>
+    </div>
+    <!--footer-->
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<a href="#" id="scroll" style="display: none;"><span></span></a>
+    <!--footer-->
+    <!--scripts-->
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/quantity-script.js"></script>
+    <script src="assets/js/range-slider.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var owl = $("#main_banner_slider");
+            owl.owlCarousel({
+                itemsCustom: [
+                    [0, 1],
+                    [450, 1],
+                    [600, 1],
+                    [700, 1],
+                    [1000, 1],
+                    [1200, 1],
+                    [1400, 1],
+                    [1600, 1]
+                ],
+                navigation: true,
+                autoPlay: 4000,
+                rtl: true
+            });
+        });
+    </script>
+    
+    
+    <script>
+        $(document).ready(function() {
+            var owl = $("#best_seller_slider");
+            owl.owlCarousel({
+                itemsCustom: [
+                    [0, 1],
+                    [450, 1],
+                    [600, 2],
+                    [700, 3],
+                    [1000, 3],
+                    [1200, 4],
+                    [1400, 4],
+                    [1600, 4]
+                ],
+                navigation: true,
+                autoPlay: 4000,
+                rtl: true
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 200) {
+                    $('#scroll').fadeIn();
+                } else {
+                    $('#scroll').fadeOut();
+                }
+            });
+            $('#scroll').click(function() {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
+            });
+
+        });
+    </script>
+    <script>
+        $(function() {
+          $('a[href="#search"]').on("click", function(event) {
+            event.preventDefault();
+            $("#search").addClass("open");
+            $('#search > form > input[type="search"]').focus();
+          });
+
+          $("#search, #search button.close").on("click keyup", function(event) {
+            if (
+              event.target == this ||
+              event.target.className == "close" ||
+              event.keyCode == 27
+            ) {
+              $(this).removeClass("open");
+            }
+          });
+
+          $("#search_form").submit(function(event) {
+            event.preventDefault();
+            return false;
+          });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,142 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-payment" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                    {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        {% if success %}
+            <div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> {{success}}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pencil"></i> {{text_edit}}</h3>
+            </div>
+            <div class="panel-body">
+                <form action="{{action}}" method="post" enctype="multipart/form-data" id="form-cod" class="form-horizontal">
+                    
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="myfatoorah_password">{{merchant_username}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="myfatoorah_merchant_username" value="{{myfatoorah_merchant_username}}" class="form-control" id="myfatoorah_merchant_username" placeholder="{{merchant_username}}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="myfatoorah_password">{{merchant_password}}</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="myfatoorah_merchant_password" value="{{myfatoorah_merchant_password}}" class="form-control" id="myfatoorah_merchant_password" placeholder="{{merchant_password}}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="">Gateway URL</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="myfatoorah_gateway_url" value="{{myfatoorah_gateway_url}}" class="form-control" id="myfatoorah_gateway_url" placeholder="Gateway URL" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="myfatoorah_payment_type">Payment Type</label>
+                        <div class="col-sm-10">
+                            <select name="myfatoorah_payment_type" class="form-control">
+                                <option value="myfatoorah" {% if myfatoorah_payment_type == 'myfatoorah' %}selected{% endif %}>MyFatoorah</option>
+                                <option value="kn" {% if myfatoorah_payment_type == 'kn' %}selected{% endif %}>KNET</option>
+                                <option value="vm" {% if myfatoorah_payment_type == 'vm' %}selected{% endif %}>Visa / Master</option>
+                                <option value="md" {% if myfatoorah_payment_type == 'md' %}selected{% endif %}>Mada KSA</option>
+                                <option value="b" {% if myfatoorah_payment_type == 'b' %}selected{% endif %}>Benefit</option>
+                                <option value="np" {% if myfatoorah_payment_type == 'np' %}selected{% endif %}>Qatar Debit Card - NAPS</option>
+                                <option value="uaecc" {% if myfatoorah_payment_type == 'uaecc' %}selected{% endif %}>Debit Cards UAE - VISA UAE</option>
+                                <option value="s" {% if myfatoorah_payment_type == 's' %}selected{% endif %}>Sadad</option>
+                                <option value="ae" {% if myfatoorah_payment_type == 'ae' %}selected{% endif %}>AMEX</option>                                <option value="ap" {% if myfatoorah_payment_type == 'ap' %}selected{% endif %}>Apple Pay</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-status">{{entry_status}}</label>
+                        <div class="col-sm-10">
+                            <select name="payment_myfatoorah_status" id="input-status" class="form-control">
+
+                                {% if payment_myfatoorah_status %}
+                                    <option value="1" selected="selected">{{text_enabled}}</option>
+                                    <option value="0">{{text_disabled}}</option>
+                                {% else %}
+                                    <option value="1">{{text_enabled}}</option>
+                                    <option value="0" selected="selected">{{text_disabled}}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-test">{{entry_test}}</label>
+                        <div class="col-sm-10">
+                            <select name="myfatoorah_test" id="input-test" class="form-control">
+                                {% if myfatoorah_test %}
+                                    <option value="1" selected="selected">{{text_enabled}}</option>
+                                    <option value="0">{{text_disabled}}</option>
+                                {% else %}
+                                    <option value="1">{{text_enabled}}</option>
+                                    <option value="0" selected="selected">{{text_disabled}}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-logging">{{entry_logging}}</label>
+                        <div class="col-sm-10">
+                            <select name="myfatoorah_logging" id="input-logging" class="form-control">
+                                {% if myfatoorah_logging %}
+                                    <option value="1" selected="selected">{{text_enabled}}</option>
+                                    <option value="0">{{text_disabled}}</option>
+                                {% else %}
+                                    <option value="1">{{text_enabled}}</option>
+                                    <option value="0" selected="selected">{{text_disabled}}</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-sort-order">{{entry_sort_order}}</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="myfatoorah_sort_order" value="{{myfatoorah_sort_order}}" placeholder="{{entry_sort_order}}" id="input-sort-order" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="entry_order_status">Order Status</label>
+                        <div class="col-sm-10">
+                            <select name="myfatoorah_order_status_id" class="form-control">
+                                {% for order_status in order_statuses %}
+                                    {% if order_status.order_status_id == myfatoorah_order_status_id %}
+                                        <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                    {% else %}
+                                        <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{footer}} 

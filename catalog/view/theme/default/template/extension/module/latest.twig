@@ -1,0 +1,61 @@
+<div class="sec_sale_main">
+        <div class="container">
+            <div class="heading_overlap_content">
+                <h2>{{text_sale}}</h2>
+                <h3>{{text_sale}}</h3>
+            </div>
+            <p>{{text_sale_1}}</p>
+            <a href="index.php?route=product/category&path=66">{{text_button}}</a>
+        </div>
+    </div>
+    <div class="sec_new_launch">
+        <div class="container">
+            <div class="heading_overlap_content">
+                <h2>{{ heading_title }}</h2>
+                <h3>{{ heading_title }}</h3>
+            </div> 
+            {% for product in products %}
+            <div class="new_launch_col">
+                <div class="col_img_brder">
+
+                    <figure>
+                        <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"  /></a>
+                        <div class="product_overlay_pop">
+                            <ul>
+                                <li>
+                                    <a href="{{ product.href }}">
+                                        <img src="assets/images/pop_search.png">
+                                        <div class="clearfix"></div>
+                                        <span>LOOK</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ product.href }}">
+                                        <img src="assets/images/pop_bag.png">
+                                        <div class="clearfix"></div>
+                                        <span>BUY</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </figure>
+                </div>
+                <div class="gradient_bg"></div>
+                <div class="clearfix"></div>
+                
+                <a href="{{ product.href }}">{{ product.name }}</a>
+                
+                <div class="price_col">
+                 <p class="price"> 
+                  {{ product.price }}
+                   </p>
+                       
+                    
+                </div>
+                
+            </div>
+            {% endfor %}
+            <div class="clearfix"></div>
+            <a href="index.php?route=product/category&path=66" class="show_all_btn">{{ text_view }}</a>
+        </div>
+    </div>

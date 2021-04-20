@@ -1,0 +1,287 @@
+{{ header }}
+<style>
+   /*/ Set the size of the div element that contains the map /*/
+  #map {
+    height: 400px;  /*/ The height is 400 pixels /*/
+    width: 100%;  /*/ The width is the width of the web page /*/
+   }
+</style>
+<div class="banner_static_inner">
+        <div class="container">
+            <h2>Contact Us</h2>
+        </div>
+    </div>
+    <!--banner inner pages-->
+    
+    <div class="contact_main_sec">
+        <div class="container">
+        {% for location in location %}
+            <div class="contact_top_cols ">
+                <h5>{{ location.name }}</h5>
+                <p>{{ location.adress }}</p>
+                <p>{{ location.phone }}</p>
+            </div>
+            {% endfor %}
+            
+            
+            
+           
+            
+            
+            <div class="section_map">
+                <div id="map" style="width: 100%; height: 300px;   "></div>
+            </div>
+            
+            
+            <div class="contact_form_sec">
+            <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="contact_form_inner">
+                    <h3>Write to us</h3>
+                    <div class="col-md-6">
+                        <input type="text" name="name" value="{{ name }}" id="input-name" class="form-control" placeholder="Full Name">
+                         {% if error_name %}
+              <div class="text-danger">{{ error_name }}</div>
+              {% endif %}
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <input type="text" name="subject" value="{{ subject }}" id="input-email" class="form-control" placeholder="Subject">
+                        {% if error_subject %}
+              <div class="text-danger">{{ error_subject }}</div>
+              {% endif %}
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <input type="text" name="number" value="{{ number }}" id="input-number" class="form-control" placeholder="Contact Number">
+                        {% if error_number %}
+              <div class="text-danger">{{ error_number }}</div>
+              {% endif %}
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <input type="text" name="email" value="{{ email }}" id="input-email" class="form-control" placeholder="Email">
+                        {% if error_email %}
+              <div class="text-danger">{{ error_email }}</div>
+              {% endif %}
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control" placeholder="How can we help you?"></textarea>
+                        {% if error_enquiry %}
+              <div class="text-danger">{{ error_enquiry }}</div>
+              {% endif %}
+                    </div>
+
+                    <input type="submit" class="login_btn"  value="{{ button_submit }}" />
+                    
+                    
+                </div>
+                </form>
+            </div>
+            
+            
+        </div>
+    </div>
+    <script>
+  // Initialize and add the map
+ 
+ function initMap() {
+    // The location of Uluru
+    //var uluru = {lat: <?php echo $latLon[0]->lattitude; ?>, lng: <?php echo $latLon[0]->longitude; ?>};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: new google.maps.LatLng(<?php echo $location[0]['lattitude']; ?>, <?php echo $location[0]['longitude']; ?>),
+      styles: 
+[
+  {
+    "elementype": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f5f5"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ffffff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dadada"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e5e5e5"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#eeeeee"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#c9c9c9"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  }
+]
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker;
+    var i = 0;
+    <?php foreach($location as $l){?>
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(<?php echo $l['lattitude'] ?>, <?php echo $l['longitude'] ?>),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent('<div class="col-md-12"><h3>smashroom</h3><p><?php echo $l['adress']; ?></p></div>');
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+     i++;
+    <?php }?>
+} 
+  
+</script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdJtdvOa-mBpSgrY8jUKHsNc3YP1LJQao&callback=initMap">
+    </script>
+{{ footer }}

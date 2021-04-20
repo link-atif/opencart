@@ -1,0 +1,15 @@
+<div class="search_set_n">
+<a class="search_header" href="#search"><img src="assets/images/search.png" alt=""></a>
+<div id="search">
+          <button type="button" class="close">×</button>
+          <form action="index.php?route=product/search&search={{search}}" method="post" name="myforms" id="search_form">
+            <input type="search" onkeypress="submit();" name="search" value="{{ search }}" placeholder="{{ text_search }}" />
+          </form>
+        </div>
+<script type="text/javascript">
+    function submit()
+    {
+    document.search.submit();
+ }
+  </script>
+</div>

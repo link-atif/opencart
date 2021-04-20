@@ -1,0 +1,61 @@
+ <div id="collapseTwo1" 1 class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo1">
+                           <div class="panel-body">
+                               <div class="accordian_chkout checkout_col_form">
+                                   <div class="col-md-6 padd_0 right_brder_col">
+                                       <div class="chkout_form_col_lft_border">
+                                           <h5>{{ text_new_customer }}</h5>
+                                           <h6>{{ text_checkout }}</h6>
+                                           <div class="account_confir_sec">
+                                               <label>
+                                                   {% if account == 'register' %}
+        <input type="radio" name="account" value="register" checked="checked" />
+        {% else %}
+        <input type="radio" name="account" value="register" />
+        {% endif %}
+                                                   <span>{{ text_register }}</span>
+                                               </label>
+                                               {% if checkout_guest %}
+                                               <label>
+                                                   {% if account == 'guest' %}
+        <input type="radio" name="account" value="guest" checked="checked" />
+        {% else %}
+        <input type="radio" name="account" value="guest" />
+        {% endif %}
+                                                   <span>{{ text_guest }}</span>
+                                               </label>
+                                               {% endif %}
+                                           </div>
+                                           
+                                           <p>{{ text_register_account }}.</p>
+                                           <input type="button" value="{{ button_continue }}" id="button-account" data-loading-text="{{ text_loading }}" class="btn_continue" />
+                                           
+                                           
+                                       </div>
+                                   </div>
+                                   
+                                   
+                                   <div class="col-md-6 padd_0">
+                                       <div class="chkout_form_col_lft_border">
+                                           <h5>{{ text_returning_customer }}</h5>
+                                           <h6>{{ text_i_am_returning_customer }}</h6>
+                                           <div class="rtc_inputs">
+                                               <div class="col-md-6 padd_l_0">
+                                                <input type="text" name="email" value="" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+                                               </div>
+                                               <div class="col-md-6 padd_r_0">
+                                                <input type="password" name="password" value="" placeholder="{{ entry_password }}" id="input-password" class="form-control" />
+                                               </div>
+                                               <a href="{{ forgotten }}" class="forgot_btn">Forgot password?</a>
+                                           </div>
+                                           
+                                           
+                                           <div class="clearfix"></div>
+                                           <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="{{ text_loading }}" class="login_btn_continue" />
+                                           
+                                           
+                                       </div>
+                                   </div>
+                                   
+                               </div>
+                           </div>
+                        </div>

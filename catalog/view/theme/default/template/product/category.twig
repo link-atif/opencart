@@ -1,0 +1,297 @@
+{{ header }}
+<div class="banner_static_inner">
+        <div class="container">
+            <h2><span>{{ heading_title }}</h2>
+        </div>
+    </div>
+    <!--banner inner pages-->
+    
+    <!--product listing-->
+       
+       <div class="product_listing_outer">
+           <div class="container">
+               
+               <div class="col-md-3">
+                   <div class="product_list_left_col">
+                       
+                       <h3>{{text_refine}}</h3>
+                       
+                       
+                       
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                 <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              {{text_price}}
+                            </a>
+                          </h4>
+
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    <div class="fillter">
+                                    <section class="range-slider" id="facet-price-range-slider" data-options='{"output":{"prefix":""},"maxSymbol":""}'>
+
+                                        <input name="range-1"id="hidden_minimum_price" value="100" min="100" max="1999" step="1" type="range">
+
+                                        <input name="range-2" id="hidden_maximum_price" value="1999" min="100" max="1999" step="1" type="range">
+
+                                    </section>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                 <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              {{text_manufacturer}}
+                            </a>
+                          </h4>
+
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                            {% for manufacturer in manufacturer %}
+                                <div class="panel-body">
+                                    
+                                    <label><input type="checkbox" name="brand" value="{{ manufacturer.manufacturer_id }}">{{ manufacturer.name }}</label>
+                                    
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                 <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              {{text_target}}
+                            </a>
+                          </h4>
+
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                            {% for gender in gender %}
+                                <div class="panel-body">
+                                    <label><input type="checkbox" name="gender" value="{{ gender.gender }}">{{ gender.gender }} </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree1">
+                                 <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree1" aria-expanded="false" aria-controls="collapseThree1">
+                              {{text_size}}
+                            </a>
+                          </h4>
+
+                            </div>
+                            <div id="collapseThree1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree1">
+                            {% for size in size %}
+                                <div class="panel-body">
+                                    <label><input type="checkbox" name="size" value="{{ size.size }}">{{ size.size }} </label>
+                                    
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        
+                        <a href="javascript:void(0)" onclick="filter_data();" class="login_btn refresh_btn">Refine Search</a>
+                        
+                    </div>
+                       
+                       
+                       <div class="product_category">
+                        
+                       </div>
+                       
+                   </div>
+               </div>
+               
+               <div class="col-md-9">
+                   <div class="product_categery_right">
+                       
+                       <div class="product_sorting">
+                           <h5>Sort</h5>
+                           
+                                <select id="mounths" class="select_custom"  onchange="location = this.value;">
+              
+              
+              
+              {% for sorts in sorts %}
+              {% if sorts.value == '%s-%s'|format(sort, order) %}
+              
+              
+              
+              <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+              
+              
+              
+              {% else %}
+              
+              
+              
+              <option value="{{ sorts.href }}">{{ sorts.text }}</option>
+              
+              
+              
+              {% endif %}
+              {% endfor %}
+            
+            
+            
+            </select>
+                            
+                       </div>
+                       <div class="clearfix"></div>
+                       
+                    <div class="seller_inner">
+
+                       <div class="row">
+                         
+                           <div id="slider_Products"></div>
+                           <div id="hide_products">
+                          <div id="result_para">
+                          
+                           {% for product in products %}
+                           <div class="col-md-4">
+                             <div class="best_sel_col_2">
+                                    <div class="best_col_brder_2">
+                                    {% if product.rating %}
+                                        <div class="prdct_rating">
+                                        {% for i in 1..5 %}
+                  {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                  {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                        <figure>
+                                            <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" /></a>
+                                            <div class="product_overlay_pop">
+                                                <ul>
+                                                    <li>
+                                                        <a href="{{ product.href }}">
+                                                            <img src="assets/images/pop_search.png">
+                                                            <div class="clearfix"></div>
+                                                            <span>LOOK</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ product.href }}">
+                                                            <img src="assets/images/pop_bag.png">
+                                                            <div class="clearfix"></div>
+                                                            <span>BUY</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </figure>
+                                    </div>
+                                    <a href="{{ product.href }}" class="b_l_2">{{ product.name }}</a>
+                                    <div class="price_col_2">
+                                        <p>{{ product.price }} <span></span></p>
+                                    </div>
+                                </div>
+                          </div>
+
+                           {% endfor %}
+                           </div>
+
+                           
+
+                          
+                           
+                           
+                           <div class="clearfix"></div>
+                           {% if total_media > 9 %}
+                           <div class="submit_buttons_form text-center load_more_btn_end" id="load">
+                           <input type="hidden" name="" id="result_no" value="9">
+                           <input type="hidden" name="" id="result_id" value="{{ categoryid }}">
+                           <input type="hidden" name="" id="result_pa" value="{{ path }}">
+                            <a "href="javascript:void(0)" class="product_load_more login_btn">Load More <span id="total_media">{{ total_media }}</span> <span >/{{ total_media }}</span></a>
+                           </div>
+                           {% endif %} 
+                            </div>
+                       </div>
+                    </div>
+                       
+                      
+                   </div>
+               </div>
+           </div>
+       </div>
+             <script type="text/javascript">
+  $(document).ready(function(){
+        count_total_news();
+    $("#load").click(function(){ 
+      loadmore();
+    }); 
+  });
+
+  function loadmore(){
+  var val = document.getElementById("result_no").value;
+  var id = document.getElementById("result_id").value;
+  var path = document.getElementById("result_pa").value;
+  
+
+    $.ajax({
+    type: 'post',
+    url: 'index.php?route=product/category/loadmoredata' ,
+    data: { val:val , id : id , path : path },
+    success: function (response) {
+    var content = document.getElementById("result_para");
+    content.innerHTML = content.innerHTML+response;
+
+    document.getElementById("result_no").value = Number(val)+2;
+    count_total_news();
+   }
+   });
+  }
+  function count_total_news(){
+    total = $("#result_no").val();
+    total_media = '{{ total_media }}';
+    if(Number(total) > Number(total_media)){
+      $("#total_media").html(total_media);
+    }else{
+      $("#total_media").html(total);
+    }
+  }
+</script>
+<script type="text/javascript">
+
+    function filter_data()
+    {
+        var brand = [];
+            $.each($("input[name='brand']:checked"), function(){
+                brand.push($(this).val());
+            });
+            
+        var minimum_price = $('#hidden_minimum_price').val();
+        
+        var maximum_price = $('#hidden_maximum_price').val();
+        var gender = gender = [];
+            $.each($("input[name='gender']:checked"), function(){
+                gender.push($(this).val());
+            });
+        var size = size = [];
+            $.each($("input[name='size']:checked"), function(){
+                size.push($(this).val());
+            });
+        
+        $.ajax({
+            url:'index.php?route=product/category/filterdata',
+            type:'post',
+            data:{ minimum_price:minimum_price, maximum_price:maximum_price, size:size,gender:gender,brand:brand},
+            success:function(data){
+                $('#slider_Products').html(data);
+                $('#hide_products').hide();
+            }
+        });
+    }
+    </script>
+{{ footer }} 
